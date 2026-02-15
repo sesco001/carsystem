@@ -1,7 +1,7 @@
 import { db } from "./db";
 import {
   users, profiles, vehicles, bookings, payments,
-  type User, type InsertUser, type Profile, type InsertProfile,
+  type User, type UpsertUser, type Profile, type InsertProfile,
   type Vehicle, type InsertVehicle, type Booking, type InsertBooking,
   type Payment, type InsertPayment
 } from "@shared/schema";
@@ -108,13 +108,13 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createVehicle(vehicle: InsertVehicle): Promise<Vehicle> {
-    const [newVehicle] = await db.insert(vehicles).values(vehicle).returning();
+    const [newVehicle] = await db.insert(vehicles).values(vehicle as any).returning();
     return newVehicle;
   }
 
   async updateVehicle(id: number, update: Partial<InsertVehicle>): Promise<Vehicle> {
     const [updated] = await db.update(vehicles)
-      .set(update)
+      .set(update as any)
       .where(eq(vehicles.id, id))
       .returning();
     return updated;
