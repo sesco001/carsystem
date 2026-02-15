@@ -21,16 +21,15 @@ export function Navigation() {
 
   const navLinks = [
     { href: "/vehicles", label: "Browse Cars" },
-    { href: "/about", label: "About Us" },
-    { href: "/contact", label: "Contact" },
+    { href: "/dashboard", label: "Dashboard" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
+        <Link href="/" className="flex items-center gap-2" data-testid="link-home">
+          <div className="bg-primary/10 p-2 rounded-md">
             <Car className="h-6 w-6 text-primary" />
           </div>
           <span className="font-display font-bold text-xl tracking-tight text-foreground">
@@ -98,10 +97,10 @@ export function Navigation() {
           ) : (
             <div className="flex items-center gap-2">
               <Link href="/api/login">
-                <Button variant="ghost">Log in</Button>
+                <Button variant="ghost" data-testid="button-login">Log in</Button>
               </Link>
               <Link href="/api/login">
-                <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25">
+                <Button data-testid="button-signup-nav">
                   Sign up
                 </Button>
               </Link>

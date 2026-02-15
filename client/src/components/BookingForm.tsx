@@ -142,9 +142,11 @@ export function BookingForm({ vehicle }: BookingFormProps) {
         )}
 
         <Button 
-          className="w-full h-12 text-lg font-semibold shadow-lg shadow-primary/20" 
+          className="w-full"
+          size="lg"
           onClick={handleBookClick}
           disabled={!dateRange.from || !dateRange.to}
+          data-testid="button-book-vehicle"
         >
           {isAuthenticated ? "Proceed to Payment" : "Log in to Book"}
         </Button>
@@ -168,13 +170,13 @@ export function BookingForm({ vehicle }: BookingFormProps) {
                   placeholder="0712 345 678"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="h-12 text-lg"
+                  data-testid="input-phone-mpesa"
                 />
               </div>
               <div className="text-sm text-muted-foreground bg-muted p-3 rounded-md">
                 A request will be sent to your phone. Please enter your PIN to authorize the payment of <strong>KES {totalPrice.toLocaleString()}</strong>.
               </div>
-              <Button onClick={handlePayment} className="w-full h-12" disabled={!phoneNumber}>
+              <Button onClick={handlePayment} className="w-full" disabled={!phoneNumber} data-testid="button-pay-now">
                 Pay Now
               </Button>
             </div>

@@ -4,6 +4,7 @@ import { useVehicle } from "@/hooks/use-data";
 import { useRoute } from "wouter";
 import { MapPin, User, CheckCircle2, Navigation as NavigationIcon, Fuel, Gauge } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 export default function VehicleDetails() {
@@ -48,7 +49,7 @@ export default function VehicleDetails() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 container mx-auto px-4 pb-8">
-          <Badge className="mb-4 bg-primary text-white hover:bg-primary border-none text-lg py-1 px-4">
+          <Badge className="mb-4 text-lg py-1 px-4">
             {vehicle.year} Model
           </Badge>
           <h1 className="font-display font-bold text-4xl md:text-6xl text-foreground text-shadow">

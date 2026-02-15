@@ -14,14 +14,12 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
   const features = Array.isArray(vehicle.features) ? vehicle.features : [];
 
   return (
-    <Card className="group overflow-hidden border-border/50 hover:shadow-xl hover:border-primary/20 transition-all duration-300 h-full flex flex-col">
+    <Card className="group overflow-hidden h-full flex flex-col" data-testid={`card-vehicle-${vehicle.id}`}>
       <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-        {/* Descriptive alt text for accessibility */}
-        {/* placeholder image for vehicle */}
         <img
           src={vehicle.imageUrl || `https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80`}
           alt={`${vehicle.make} ${vehicle.model}`}
-          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+          className="object-cover w-full h-full"
         />
         <div className="absolute top-3 right-3">
           <Badge variant={vehicle.available ? "default" : "secondary"} className="shadow-sm">
@@ -68,7 +66,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 
       <CardFooter className="pt-0 mt-auto">
         <Link href={`/vehicles/${vehicle.id}`} className="w-full">
-          <Button className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors">
+          <Button className="w-full" data-testid={`button-view-vehicle-${vehicle.id}`}>
             View Details
           </Button>
         </Link>

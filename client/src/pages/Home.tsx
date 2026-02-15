@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { VehicleCard } from "@/components/VehicleCard";
 import { useVehicles } from "@/hooks/use-data";
@@ -49,6 +50,7 @@ export default function Home() {
                   className="pl-10 h-12 border-0 bg-transparent focus-visible:ring-0"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
+                  data-testid="input-search-location"
                 />
               </div>
               <div className="w-px bg-border hidden md:block" />
@@ -59,7 +61,7 @@ export default function Home() {
                   className="pl-10 h-12 border-0 bg-transparent focus-visible:ring-0 text-muted-foreground"
                 />
               </div>
-              <Button size="lg" className="h-12 px-8 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold">
+              <Button size="lg" variant="secondary" data-testid="button-search">
                 Search
               </Button>
             </div>
@@ -71,27 +73,27 @@ export default function Home() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card p-8 rounded-2xl shadow-sm border hover:shadow-md transition-all">
-              <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <Card className="p-8">
+              <div className="bg-primary/10 w-12 h-12 rounded-md flex items-center justify-center mb-4">
                 <Shield className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-bold text-xl mb-2">Secure & Insured</h3>
               <p className="text-muted-foreground">Every rental includes comprehensive insurance for peace of mind.</p>
-            </div>
-            <div className="bg-card p-8 rounded-2xl shadow-sm border hover:shadow-md transition-all">
-              <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            </Card>
+            <Card className="p-8">
+              <div className="bg-primary/10 w-12 h-12 rounded-md flex items-center justify-center mb-4">
                 <Clock className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-bold text-xl mb-2">Instant Booking</h3>
               <p className="text-muted-foreground">Book instantly and pay securely via M-Pesa in seconds.</p>
-            </div>
-            <div className="bg-card p-8 rounded-2xl shadow-sm border hover:shadow-md transition-all">
-              <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            </Card>
+            <Card className="p-8">
+              <div className="bg-primary/10 w-12 h-12 rounded-md flex items-center justify-center mb-4">
                 <Award className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-bold text-xl mb-2">Top Rated Fleet</h3>
               <p className="text-muted-foreground">Well-maintained 4x4 Land Cruisers perfect for the terrain.</p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -138,12 +140,12 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/vehicles">
-              <Button size="lg" variant="secondary" className="h-14 px-8 font-bold text-lg">
+              <Button size="lg" variant="secondary" data-testid="button-browse-vehicles">
                 Browse Vehicles
               </Button>
             </Link>
             <Link href="/api/login">
-              <Button size="lg" variant="outline" className="h-14 px-8 font-bold text-lg bg-transparent border-white text-white hover:bg-white/10 hover:text-white">
+              <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur border-white/50 text-white" data-testid="button-signup">
                 Create Account
               </Button>
             </Link>
@@ -161,8 +163,8 @@ export default function Home() {
             <h4 className="text-white font-bold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/vehicles">Browse Cars</Link></li>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/dashboard">My Dashboard</Link></li>
+              <li><Link href="/api/login">Sign In</Link></li>
             </ul>
           </div>
           <div>
